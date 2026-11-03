@@ -1,0 +1,4 @@
+record_type,item_id,method_label,ground_truth_hidden,system_decision_hidden,grounding_1_to_5,usefulness_1_to_5,correctness_1_to_5,comments
+illustrative,example_001,Method A,true,true,,,,
+illustrative,example_002,Method B,true,true,,,,
+illustrative,example_003,Method A,true,true,,,,

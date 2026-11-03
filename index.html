@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="VERITAS-IAD interactive reviewer simulation for evidence-verified industrial anomaly detection">
   <title>VERITAS-IAD | Inspection Console</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <div class="app-shell">
@@ -25,7 +25,7 @@
     <div class="workspace">
       <header class="appbar"><div><span class="breadcrumb">Industrial AI / <b id="viewLabel">Overview</b></span></div><div class="appbar-actions"><button class="icon-button" id="themeToggle" title="Toggle contrast">◐</button><div class="protocol-chip"><i></i> Frozen protocol</div><div class="operator"><span>RD</span><div><b>Research Demo</b><small>Operator</small></div></div></div></header>
       <main>
-        <div class="simulation-notice" role="note"><b>Interactive reviewer simulation</b><span>Runs frozen, evidence-backed sample images in the browser; no upload, live model inference, or production decision is performed.</span></div>
+        <div class="simulation-notice" role="note"><b>Interactive reviewer simulation</b><span>Uses only the bundled, evidence-backed sample library; no live model inference or production decision is performed.</span></div>
         <section class="view active" id="dashboardView" data-title="Overview">
           <div class="view-head"><div><p class="eyebrow">Operational overview</p><h1>Verification-guided inspection</h1><p>One console for anomaly perception, evidence verification, calibrated risk, and selective action.</p></div><button class="primary-action" data-open-view="inspect">Start inspection <span>→</span></button></div>
           <div class="kpi-grid"><article><span>Indexed images</span><strong>23,740</strong><small>4 public benchmarks</small></article><article><span>Final-test samples</span><strong>5,232</strong><small>Frozen evaluation set</small></article><article><span>VLM analyses</span><strong>1,524</strong><small>Selective routing</small></article><article><span>Best image AUROC</span><strong>92.94%</strong><small>MVTec AD</small></article></div>
@@ -74,6 +74,6 @@
     </div>
   </div>
   <div class="toast" id="toast"></div>
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ The local web application demonstrates a realistic verification-guided industria
 ## Application screens
 
 1. `screenshots/01_dashboard.png` — Operational overview, live five-agent pipeline, benchmark profile, session history, and method capabilities.
-2. `screenshots/02_new_inspection.png` — Scenario selection, image upload, operating metadata, and staged agent execution.
+2. `screenshots/02_new_inspection.png` — Bundled sample-image selection, operating metadata, and staged agent execution.
 3. `screenshots/03_decision_review.png` — Visual anomaly overlay, calibrated action, evidence attribution, structured reasoning, and exportable trace.
 4. `screenshots/04_evidence_explorer.png` — Interactive benchmark metrics, calibration plots, risk–coverage plots, and dataset composition.
 5. `screenshots/05_operations.png` — Agent health, stage latency, adaptive routing, and inspection queue.
@@ -13,7 +13,7 @@ The local web application demonstrates a realistic verification-guided industria
 
 ## Interactive workflow
 
-- Select one of three industrial scenarios or upload an image.
+- Select one of three bundled industrial sample images.
 - Run the five-stage VERITAS-IAD agent pipeline and observe live stage progression.
 - Review the resulting action, risk score, visual evidence, reasoning, and risk contributions.
 - Export a machine-readable decision trace.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="VERITAS-IAD interactive reviewer simulation for evidence-verified industrial anomaly detection">
   <title>VERITAS-IAD | Inspection Console</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <div class="app-shell">
@@ -25,7 +25,7 @@
     <div class="workspace">
       <header class="appbar"><div><span class="breadcrumb">Industrial AI / <b id="viewLabel">Overview</b></span></div><div class="appbar-actions"><button class="icon-button" id="themeToggle" title="Toggle contrast">◐</button><div class="protocol-chip"><i></i> Frozen protocol</div><div class="operator"><span>RD</span><div><b>Research Demo</b><small>Operator</small></div></div></div></header>
       <main>
-        <div class="simulation-notice" role="note"><b>Interactive reviewer simulation</b><span>Runs frozen, evidence-backed scenarios in the browser. Uploaded images are previewed locally; no live model inference or production decision is performed.</span></div>
+        <div class="simulation-notice" role="note"><b>Interactive reviewer simulation</b><span>Runs frozen, evidence-backed sample images in the browser; no upload, live model inference, or production decision is performed.</span></div>
         <section class="view active" id="dashboardView" data-title="Overview">
           <div class="view-head"><div><p class="eyebrow">Operational overview</p><h1>Verification-guided inspection</h1><p>One console for anomaly perception, evidence verification, calibrated risk, and selective action.</p></div><button class="primary-action" data-open-view="inspect">Start inspection <span>→</span></button></div>
           <div class="kpi-grid"><article><span>Indexed images</span><strong>23,740</strong><small>4 public benchmarks</small></article><article><span>Final-test samples</span><strong>5,232</strong><small>Frozen evaluation set</small></article><article><span>VLM analyses</span><strong>1,524</strong><small>Selective routing</small></article><article><span>Best image AUROC</span><strong>92.94%</strong><small>MVTec AD</small></article></div>
@@ -38,9 +38,9 @@
         </section>
 
         <section class="view" id="inspectView" data-title="New inspection">
-          <div class="view-head compact"><div><p class="eyebrow">New inspection</p><h1>Simulate an industrial inspection</h1><p>Select a frozen scenario, optionally preview a local image, and observe the evidence-verification pipeline.</p></div><span class="run-id" id="runId">RUN —</span></div>
+          <div class="view-head compact"><div><p class="eyebrow">New inspection</p><h1>Simulate an industrial inspection</h1><p>Select one of the bundled inspection samples and observe the evidence-verification pipeline.</p></div><span class="run-id" id="runId">RUN —</span></div>
           <div class="inspection-layout">
-            <section class="panel input-panel"><div class="panel-head"><div><span>Inspection input</span><small>Choose a frozen reviewer scenario</small></div></div><div class="scenario-grid" id="scenarioGrid"></div><div class="upload-zone" id="uploadZone"><div id="previewArea"><span class="upload-icon">＋</span><b>Preview a local inspection image</b><small>PNG or JPEG · never uploaded · simulation output follows the selected frozen scenario</small></div><input id="imageInput" type="file" accept="image/png,image/jpeg"></div><div class="input-meta"><label>Product line<select id="productLine"><option>Assembly line A</option><option>Packaging line B</option><option>Component cell C</option></select></label><label>Inspection priority<select id="priority"><option>Standard</option><option>High</option><option>Critical</option></select></label></div><button class="run-button" id="runInspection">Run reviewer simulation <span>→</span></button></section>
+            <section class="panel input-panel"><div class="panel-head"><div><span>Inspection sample library</span><small>Choose an existing frozen reviewer image</small></div><span class="library-count">3 SAMPLES</span></div><div class="scenario-grid" id="scenarioGrid"></div><div class="sample-preview" id="samplePreview"><img id="selectedSampleImage" src="assets/sample_cable.svg" alt="Selected cable structural anomaly sample"><div><span>SELECTED SAMPLE</span><b id="selectedSampleName">Cable defect</b><small id="selectedSampleType">Structural deviation</small></div></div><div class="input-meta"><label>Product line<select id="productLine"><option>Assembly line A</option><option>Packaging line B</option><option>Component cell C</option></select></label><label>Inspection priority<select id="priority"><option>Standard</option><option>High</option><option>Critical</option></select></label></div><button class="run-button" id="runInspection">Run reviewer simulation <span>→</span></button></section>
             <section class="panel execution-panel"><div class="panel-head"><div><span>Agent execution</span><small id="executionState">Waiting for input</small></div><span class="elapsed" id="elapsed">0.0 s</span></div><div class="execution-list" id="executionList"></div><div class="execution-summary" id="executionSummary"><span>Select a scenario and run the analysis to observe the verification workflow.</span></div></section>
           </div>
         </section>
@@ -48,7 +48,7 @@
         <section class="view" id="reviewView" data-title="Decision review">
           <div class="view-head compact"><div><p class="eyebrow">Decision review</p><h1>Evidence-backed inspection result</h1><p>Review the visual evidence, independent verification, calibrated risk, and final action.</p></div><div class="decision-actions"><button class="secondary-action" id="exportTrace">Export trace</button><button class="primary-action" data-open-view="inspect">New inspection</button></div></div>
           <div class="review-grid">
-            <section class="panel visual-review"><div class="panel-head"><div><span>Visual evidence</span><small id="reviewSampleLabel">Cable · structural defect</small></div><button class="toggle-overlay active" id="overlayToggle">Anomaly overlay</button></div><div class="review-image" id="reviewImage"><div class="industrial-sample cable-sample"><span></span><i></i></div><div class="heatmap-overlay" id="heatmapOverlay"></div><div class="region-box"></div></div><div class="visual-legend"><span><i class="normal-color"></i>Normal structure</span><span><i class="anomaly-color"></i>High anomaly response</span><span>Localized region: 0.8719 agreement</span></div></section>
+            <section class="panel visual-review"><div class="panel-head"><div><span>Visual evidence</span><small id="reviewSampleLabel">Cable · structural defect</small></div><button class="toggle-overlay active" id="overlayToggle">Anomaly overlay</button></div><div class="review-image" id="reviewImage"><img id="reviewSampleImage" src="assets/sample_cable.svg" alt="Selected inspection evidence"><div class="heatmap-overlay" id="heatmapOverlay"></div><div class="region-box"></div></div><div class="visual-legend"><span><i class="normal-color"></i>Normal structure</span><span><i class="anomaly-color"></i>High anomaly response</span><span>Localized region: 0.8719 agreement</span></div></section>
             <section class="panel decision-card"><div class="decision-header"><span>Final action</span><b id="decisionBadge">HUMAN REVIEW</b></div><div class="risk-score"><div><strong id="riskValue">0.72</strong><span>calibrated risk</span></div><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48"></circle><circle id="riskArc" cx="60" cy="60" r="48"></circle></svg></div><div class="decision-facts"><div><span>Anomaly probability</span><b id="anomalyProbability">0.93</b></div><div><span>Verifier agreement</span><b id="verifierAgreement">0.64</b></div><div><span>Shift score</span><b id="shiftScore">0.68</b></div><div><span>Reasoning route</span><b id="routeStatus">Invoked</b></div></div><div class="decision-rationale"><span>Verified rationale</span><p id="decisionRationale">Localized structural deviation is supported by perception evidence. Elevated distribution shift and verifier disagreement require expert review.</p></div></section>
             <section class="panel evidence-trace"><div class="panel-head"><div><span>Evidence trace</span><small>Independent contributions to calibrated risk</small></div></div><div id="riskContributions"></div></section>
             <section class="panel reasoning-card"><div class="panel-head"><div><span>Structured reasoning</span><small>Selective vision-language analysis</small></div><span class="schema-chip">VALID SCHEMA</span></div><div class="reasoning-fields"><div><span>Observed condition</span><p id="observedCondition">Surface discontinuity near the central bend.</p></div><div><span>Expected normal state</span><p id="expectedState">Continuous insulation with uniform texture and geometry.</p></div><div><span>Independent check</span><p id="independentCheck">Localization agrees with high-response region; exemplar consistency is reduced.</p></div></div></section>
@@ -74,6 +74,6 @@
     </div>
   </div>
   <div class="toast" id="toast"></div>
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

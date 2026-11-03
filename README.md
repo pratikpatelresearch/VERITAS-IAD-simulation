@@ -17,12 +17,12 @@ Open `http://127.0.0.1:4173`.
 
 ## Application workflow
 
-Use the sidebar to move between Overview, New Inspection, Decision Review, Evidence Explorer, Operations, and Human Evaluation. New Inspection supports three deterministic industrial scenarios and local image preview. Running an inspection animates the five-agent pipeline, creates a session-history record, and opens the evidence-backed Decision Review.
+Use the sidebar to move between Overview, New Inspection, Decision Review, Evidence Explorer, Operations, and Human Evaluation. New Inspection provides three bundled deterministic industrial sample images; selecting a sample updates the main preview and the downstream Decision Review. Running an inspection animates the five-agent pipeline, creates a session-history record, and opens the evidence-backed Decision Review.
 
 ## Evidence boundaries
 
 - This is an interactive reviewer simulation using frozen representative outputs, not live model inference.
-- A locally selected image is previewed in the browser and is not uploaded; the simulated result continues to follow the selected frozen scenario.
+- Reviewers select only from the three bundled frozen sample images. The public simulation has no image-upload control.
 - Numerical values come from accepted Drive artifacts and `PROJECT_HANDOFF.md`.
 - The human-rating interface stores illustrative assessments in browser `localStorage`.
 - All visible quantitative results trace to accepted implementation evidence.
@@ -32,4 +32,4 @@ Use the sidebar to move between Overview, New Inspection, Decision Review, Evide
 
 ## Privacy
 
-The site has no server-side component, analytics, account system, or data-upload endpoint. Browser-local previews, session history, ratings, and exported traces remain on the reviewer's device.
+The site has no server-side component, analytics, account system, or data-upload endpoint. Session history, ratings, and exported traces remain on the reviewer's device.
